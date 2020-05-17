@@ -26,11 +26,12 @@ def tokenize(text):
     return clean_tokens
 
 # load data
-engine = create_engine('sqlite:///../data/YourDatabaseName.db')
-df = pd.read_sql_table('YourTableName', engine)
+engine = create_engine('sqlite:///../data/DisasterResponse.db')
+df = pd.read_sql_table('DisasterMessages', engine)
+print("Number of messages is: ", df.shape[0])
 
 # load model
-model = joblib.load("../models/your_model_name.pkl")
+model = joblib.load("../models/classifier.pkl")
 
 
 # index webpage displays cool visuals and receives user input text for model
@@ -45,6 +46,11 @@ def index():
     
     # create visuals
     # TODO: Below is an example - modify to create your own visuals
+    
+    # NEW visualisation: display top 5 categories
+    top_cat_count = df.iloc[:,4:].sum().sort_values(ascending=False)[1:6]
+    top_cat_names = list(top_cat_count.index)
+    
     graphs = [
         {
             'data': [
@@ -61,6 +67,25 @@ def index():
                 },
                 'xaxis': {
                     'title': "Genre"
+                }
+            }
+        },
+        
+        {
+            'data': [
+                Bar(
+                    x=top_cat_names,
+                    y=top_cat_count
+                )
+            ],
+
+            'layout': {
+                'title': 'Top 5 Categories',
+                'yaxis': {
+                    'title': "Count"
+                },
+                'xaxis': {
+                    'title': "Categories"
                 }
             }
         }
@@ -93,6 +118,18 @@ def go():
 
 
 def main():
+    """
+    Main executable function.
+    No changes made to Udacity template.
+    
+    Note: In the original app/templates/master.html I replaced the line 
+    <script src="https://d14fo0winaifog.cloudfront.net/plotly-basic.js"></script> with 
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script> in order to get the visualisations to load.
+    It took me ages to work out why the visualisations wouldn't load!!! Thanks to a Udacity mentor for offering this fix. Apparently there is a plotly server availability issue with the old script.
+    """
+    
+
+
     app.run(host='0.0.0.0', port=3001, debug=True)
 
 
