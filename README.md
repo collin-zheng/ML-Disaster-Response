@@ -13,4 +13,7 @@
 
 3. In the browser, go to http://0.0.0.0:3001/.
 
-Note: In the original app/templates/master.html I replaced the line <script src="https://d14fo0winaifog.cloudfront.net/plotly-basic.js"></script> with <script src="https://d14fo0winaifog.cloudfront.net/plotly-basic.js"></script> otherwise the visualisations will not load correctly due to a plotly server availability issue. It took me ages to work out why the visualisations wouldn't load!!! Thanks to a Udacity mentor for offering this fix.
+Note: In the original app/templates/master.html I replaced the line 
+<script src="https://d14fo0winaifog.cloudfront.net/plotly-basic.js"></script> with 
+‌<script src="https://cdn.plot.ly/plotly-latest.min.js"></script> in order to get the visualisations to load.
+It took me ages to work out why the visualisations wouldn't load!!! Thanks to a Udacity mentor for offering this fix. Apparently there is a plotly server availability issue with the old script.
