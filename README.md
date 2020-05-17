@@ -5,6 +5,7 @@
 
     - To run ETL pipeline that cleans data and stores in database
         `python data/process_data.py data/disaster_messages.csv data/disaster_categories.csv data/DisasterResponse.db`
+        NOTE: an error may occur if a database file already exists. For instance, please ensure that there does not already exist a DisasterResponse.db in the filepath prior to running the command.
     - To run ML pipeline that trains classifier and saves
         `python models/train_classifier.py data/DisasterResponse.db models/classifier.pkl`
 
