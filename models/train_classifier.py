@@ -71,10 +71,10 @@ def tokenize(text):
     # tokenise words
     tokens = word_tokenize(text)
     
-    # instantiate lemmatiser
+    # instantiate lemmatiser object
     lemmatizer = WordNetLemmatizer()
     
-    # instantiate stemmer
+    # instantiate stemmer object
     stemmer = PorterStemmer()
     
     text_tokenised = []
@@ -112,8 +112,8 @@ def build_model():
                         ])
 
     # declare parameters for grid search
-    parameters = {'clf__estimator__n_estimators': [50, 100],
-                  'clf__estimator__min_samples_split': [2, 3, 4],
+    parameters = {'clf__estimator__n_estimators': [40, 80],
+                  'clf__estimator__min_samples_split': [2, 3, 4, 5],
                   'clf__estimator__criterion': ['entropy', 'gini']
                  }
     
@@ -143,9 +143,10 @@ def evaluate_model(model, X_test, Y_test, cat_names):
     
     # calculate the accuracy for each prediction
     for i in range(len(cat_names)):
-        print("Category:", cat_names[i],"\n", classification_report(Y_test.iloc[:, i].values, Y_pred[:, i]))
-        print('Accuracy of %25s: %.2f' %(cat_names[i], accuracy_score(Y_test.iloc[:, i].values, Y_pred[:,i])))
-
+        print("Category:", cat_names[i])
+        print("Accuracy:", accuracy_score(Y_test.iloc[:, i].values, Y_pred[:,i]))
+        print(classification_report(Y_test.iloc[:, i].values, Y_pred[:, i]))
+        print("\n")
 
 def save_model(model, model_filepath):
     """
