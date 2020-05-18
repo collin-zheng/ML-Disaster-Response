@@ -1,9 +1,9 @@
 # Disaster Response Pipeline Project
 
 ### Project details:
-# This project is a predictive model that classifies messages related to disasters into 36 different categories.
-# It uses a random forest algorithm trained on roughly 20,000 messages. The training data and results are displayed visually.
-# Users are able to input their own disaster-related messages in a GUI interface and see classification results visually.
+This project is a predictive model that classifies messages related to disasters into 36 different categories.
+It uses a random forest algorithm trained on roughly 20,000 messages. The training data and results are displayed visually.
+Users are able to input their own disaster-related messages in a GUI interface and see classification results visually.
 
 ### Instructions:
 1. Run the following commands in the project's root directory to set up your database and model.
@@ -18,7 +18,7 @@
 
 3. In the browser, go to http://0.0.0.0:3001/.
 
+### Known bugs:
 Please note: In the original app/templates/master.html I replaced the line 
 <script src="https://d14fo0winaifog.cloudfront.net/plotly-basic.js"></script> with 
-<script src="https://cdn.plot.ly/plotly-latest.min.js"></script> in order to get the visualisations to load.
-It took me ages to work out why the visualisations wouldn't load!!! Thanks to a Udacity mentor for offering this fix. Apparently there is a plotly server availability issue with the old script.
+<script src="https://cdn.plot.ly/plotly-latest.min.js"></script> in order to get the visualisations to load. Apparently there is a plotly server availability issue with the old script, resulting in the histograms failing to load.
